@@ -22,45 +22,45 @@ class SweetAlertOptions {
   /// if null,
   /// default value is `SweetAlert.success` when `showCancelButton`=false
   /// and `SweetAlert.danger` when `showCancelButton` = true
-  final Color confirmButtonColor;
+  final Color? confirmButtonColor;
 
   /// if null,default value is `SweetAlert.cancel`
-  final Color cancelButtonColor;
+  final Color? cancelButtonColor;
 
   /// if null,default value is `SweetAlert.successText` when `showCancelButton`=false
   ///  and `SweetAlert.dangerText` when `showCancelButton` = true
-  final String confirmButtonText;
+  final String? confirmButtonText;
 
   /// if null,default value is `SweetAlert.cancelText`
-  final String cancelButtonText;
+  final String? cancelButtonText;
 
   /// If set to true, two buttons will be displayed.
-  final bool showCancelButton;
+  final bool? showCancelButton;
 
 
-  final SweetAlertStyle style;
+  final SweetAlertStyle? style;
 
   SweetAlertOptions(
-      {this.showCancelButton: false,
+      {this.showCancelButton= false,
      required this.title,
      required this.subtitle,
      required this.onPress,
-     required this.cancelButtonColor,
-     required this.cancelButtonText,
-     required this.confirmButtonColor,
-     required this.confirmButtonText,
-     required this.style});
+      this.cancelButtonColor,
+      this.cancelButtonText,
+      this.confirmButtonColor,
+      this.confirmButtonText,
+      this.style});
 }
 
 class SweetAlertDialog extends StatefulWidget {
   /// animation curve when showing,if null,default value is `SweetAlert.showCurve`
-  final Curve curve;
+  final Curve? curve;
 
-  final SweetAlertOptions options;
+  final SweetAlertOptions? options;
 
   SweetAlertDialog({
-   required this.options,
-   required this.curve,
+    this.options,
+    this.curve,
   });
 
   @override
