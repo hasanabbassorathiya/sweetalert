@@ -17,7 +17,7 @@ class SweetAlertOptions {
   final String title;
   final String subtitle;
 
-  final SweetAlertOnPress onPress;
+  final SweetAlertOnPress? onPress;
 
   /// if null,
   /// default value is `SweetAlert.success` when `showCancelButton`=false
@@ -44,7 +44,7 @@ class SweetAlertOptions {
       {this.showCancelButton= false,
      required this.title,
      required this.subtitle,
-     required this.onPress,
+     this.onPress,
       this.cancelButtonColor,
       this.cancelButtonText,
       this.confirmButtonColor,
@@ -103,7 +103,7 @@ class SweetAlertDialogState extends State<SweetAlertDialog>
   }
 
   void confirm() {
-    if (_options?.onPress != null && _options?.onPress(true) == false)
+    if (_options?.onPress != null && _options?.onPress!(true) == false)
       return;
     Navigator.pop(context);
   }
@@ -111,7 +111,7 @@ class SweetAlertDialogState extends State<SweetAlertDialog>
 
 
   void cancel() {
-    if (_options?.onPress != null && _options?.onPress(false) == false)
+    if (_options?.onPress != null && _options?.onPress!(false) == false)
       return;
     Navigator.pop(context);
   }
@@ -264,12 +264,12 @@ abstract class SweetAlert {
      required String title,
      required String subtitle,
       bool showCancelButton=false,
-      required SweetAlertOnPress onPress,
-      required Color cancelButtonColor,
-    required  Color confirmButtonColor,
-     required String cancelButtonText,
-     required String confirmButtonText,
-     required SweetAlertStyle style}) {
+       SweetAlertOnPress? onPress,
+       Color? cancelButtonColor,
+      Color? confirmButtonColor,
+      String? cancelButtonText,
+      String? confirmButtonText,
+      SweetAlertStyle? style}) {
     SweetAlertOptions options =  new SweetAlertOptions(
         showCancelButton: showCancelButton,
         title: title,
